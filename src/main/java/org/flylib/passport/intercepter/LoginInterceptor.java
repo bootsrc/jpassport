@@ -49,7 +49,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     		printParameters(request, controller);
     		// 访问需要登录的接口	
         	if (controller instanceof Authed) {
-        		logger.info("访问需要登录的接口(@Authed)...........");
+        		logger.info("访问需要登录的接口(Authed)...........");
     			if (StringUtils.isEmpty(token)) {
     				flushError(response, MobResponseCode.TOKEN_IS_NULL, MobResponseCode.TOKEN_IS_NULL_DESC);
     				return false;
