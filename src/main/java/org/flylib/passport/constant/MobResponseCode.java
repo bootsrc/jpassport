@@ -4,11 +4,9 @@ package org.flylib.passport.constant;
 //import com.inctech.common.inout.CommonOut;
 
 /**
- * @Description: 应答码
  * 
- * @author hxc
- * 
- * @date 2013-2-26 上午10:12:41
+ * @author Frank.Liu
+ * 应答码
  */
 public class MobResponseCode
 {
