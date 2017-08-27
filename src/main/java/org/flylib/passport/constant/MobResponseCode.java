@@ -46,6 +46,9 @@ public class MobResponseCode
     
     public static final String USER_MOBILE_REPEAT_DESC = "手机号码已注册";
     
+    public static final String USER_REPEAT = "1000";
+    public static final String USER_REPEAT_DESC = "此用户名已注册";
+    
     // 输入密码不正确
     public static final String USER_PASSWORD_ERROR = "202";
     
