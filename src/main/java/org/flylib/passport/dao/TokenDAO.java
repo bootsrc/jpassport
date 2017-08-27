@@ -11,4 +11,5 @@ public interface TokenDAO {
 	String getToken(Long userId);
 	Integer insert(@Param("userId") Long userId, @Param("token") String token
 			, @Param("expire") Long expire);
+	Integer updateToken(@Param("userId") Long userId, @Param("token") String token);
 }

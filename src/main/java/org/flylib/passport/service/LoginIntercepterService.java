@@ -17,17 +17,13 @@ import com.alibaba.fastjson.JSON;
 @Component
 public class LoginIntercepterService {
 	@Autowired
-	private RedisClient redisClient;
+	private TokenService tokenService;
 	
-	public Passport getPassport(String userId) {
-		String key = CommonCacheKey.PASSPORT_PREFIX + userId;
-		String passportStr = redisClient.get(key);
-		Passport passport = null;
-		if (StringUtils.isEmpty(passportStr)) {
-			passport = new Passport();
-		} else {
-			passport = JSON.parseObject(passportStr, Passport.class);
-		}
+	public Passport getPassport(Long userId) {
+		String token = tokenService.getToken(new Long(userId));
+		Passport passport = new Passport();
+		passport.setUserId(userId);
+		passport.setToken(token);
 		return passport;
 	}
 }

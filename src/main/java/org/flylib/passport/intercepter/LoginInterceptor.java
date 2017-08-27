@@ -8,9 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.flylib.passport.annotation.AuthController;
-import org.flylib.passport.constant.MobResponseCode;
+import org.flylib.passport.constant.AuthResponseCode;
 import org.flylib.passport.model.Passport;
 import org.flylib.passport.service.LoginIntercepterService;
+import org.flylib.passport.service.TokenService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 	@Autowired
 	LoginIntercepterService loginIntercepterService;
+	
+	@Autowired
+	private TokenService tokenService;
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -44,21 +48,22 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     		// 访问需要登录的接口那些
     		// 被@AuthController注解的Controller
     		boolean isPresent = controller.getClass().isAnnotationPresent(AuthController.class);
-    		if (isPresent) {
+    		if (isPresent && !StringUtils.isEmpty(userId)) {
         		logger.info("访问需要登录的接口(Authed)...........");
     			if (StringUtils.isEmpty(token)) {
-    				flushError(response, MobResponseCode.TOKEN_IS_NULL, MobResponseCode.TOKEN_IS_NULL_DESC);
+    				flushError(response, AuthResponseCode.TOKEN_IS_NULL, AuthResponseCode.TOKEN_IS_NULL_DESC);
     				return false;
     			}
-    			Passport passport = loginIntercepterService.getPassport(userId);
-    			if (StringUtils.isEmpty(passport.getUserId())) {
-    				flushError(response, MobResponseCode.TOKEN_EXPIRED, MobResponseCode.TOKEN_EXPIRED_DESC);
-    				return false;
+    			Passport passport = loginIntercepterService.getPassport(new Long(userId));
+    			String storedToken = passport.getToken();
+    			if (StringUtils.isEmpty(storedToken)) {
+					flushError(response, AuthResponseCode.TOKEN_EXPIRED, AuthResponseCode.TOKEN_EXPIRED_DESC);
+					return false;
+    			} else if (!storedToken.equals(token)) {
+    					flushError(response, AuthResponseCode.TOKEN_INVALID, AuthResponseCode.TOKEN_INVALID_DESC);
+        				return false;
     			}
-    			if (!passport.getToken().equals(token)) {
-    				flushError(response, MobResponseCode.TOKEN_INVALID, MobResponseCode.TOKEN_INVALID_DESC);
-    				return false;
-    			}
+    			
             } // 被@AuthController注解的 结束
             
         }     //HandlerMethod 结束
@@ -112,7 +117,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		res.setCharacterEncoding("utf-8");
 		res.setContentType("application/json;charset=UTF-8");
 		PrintWriter writer = res.getWriter();
-		writer.append("{\"QuickBaseResponse\":{\"code\":" + code + ", \"desc\":\"" + desc + "\"}}");
+		writer.append("{\"AuthControllerResponse\":{\"code\":" + code + ", \"desc\":\"" + desc + "\"}}");
 		writer.flush();
 		writer.close();
 	}

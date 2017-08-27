@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import org.flylib.passport.dao.TokenDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 /** 
 * @author Frank Liu(liushaomingdev@163.com)
@@ -15,11 +16,39 @@ public class TokenService {
 	@Autowired
 	private TokenDAO tokenDAO;
 	
+	@Autowired
+	private TokenRedisService tokenRedisService;
+	
 	public String getToken(Long userId) {
-		return tokenDAO.getToken(userId);
+		String cachedToken = tokenRedisService.getToken(userId);
+		String token = "";
+		if (StringUtils.isEmpty(cachedToken)) {
+			token = tokenDAO.getToken(userId);
+		} else {
+			token = cachedToken;
+		}
+		return token;
+	}
+	
+	public String copyTokenToCache(Long userId) {
+		String tokenInDB = tokenDAO.getToken(userId);
+		tokenRedisService.setToken(userId, tokenInDB);
+		return tokenInDB;
 	}
 	
 	public Integer insert(Long userId, String token, Long expire) {
-		return tokenDAO.insert(userId, token, expire);
+		Integer count = tokenDAO.insert(userId, token, expire);
+		if (count > 0) {
+			tokenRedisService.setToken(userId, token);
+		}
+		return count;
+	}
+	
+	public Integer updateToken(Long userId, String token) {
+		Integer count = tokenDAO.updateToken(userId, token);
+		if (count > 0) {
+			tokenRedisService.setToken(userId, token);
+		}
+		return count;
 	}
 }

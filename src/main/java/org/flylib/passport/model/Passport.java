@@ -9,13 +9,13 @@ import java.io.Serializable;
 */
 public class Passport implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String userId = "";
+	private Long userId = 0L;
 	private String token = "";
 	
-	public String getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 	public String getToken() {

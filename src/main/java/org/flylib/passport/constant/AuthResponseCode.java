@@ -8,7 +8,7 @@ package org.flylib.passport.constant;
  * @author Frank.Liu
  * 应答码
  */
-public class MobResponseCode
+public class AuthResponseCode
 {
     // 成功
     public static final String SUCCESS = "0";
@@ -48,6 +48,9 @@ public class MobResponseCode
     
     public static final String USER_REPEAT = "1000";
     public static final String USER_REPEAT_DESC = "此用户名已注册";
+    
+    public static final String USER_REGISTER_FAILED = "1001";
+    public static final String USER_REGISTER_FAILED_DESC = "用户注册失败";
     
     // 输入密码不正确
     public static final String USER_PASSWORD_ERROR = "202";
