@@ -3,14 +3,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.flylib</groupId>
 	<artifactId>flylib-passport</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>flylib-passport</name>
 	<description>Passport Via userId and token</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- spring版本号 -->
-		<spring.version>4.3.3.RELEASE</spring.version>
+		<spring.version>4.3.10.RELEASE</spring.version>
 		<mybatis.version>3.2.4</mybatis.version>
 	</properties>
 	<dependencies>
