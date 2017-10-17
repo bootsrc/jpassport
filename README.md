@@ -30,3 +30,5 @@ Please add this dependency in your own project pom file.
 	&lt;/dependency&gt;
 </pre></code>
 <br/>
+
+Database table SQL Scripts are in doc/db/xxx.sql <br/>
