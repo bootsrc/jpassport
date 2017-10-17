@@ -24,9 +24,9 @@ git clone https://github.com/flylib/flylib-site.git    and run it. <br/>
 
 <pre><code>
 	&lt;dependency&gt;
-		&lt;groupId>org.flylib &lt;/groupId&gt;
-		&lt;artifactId>flylib-passport &lt;/artifactId&gt;
-		&lt; version>1.0.0-SNAPSHOT&lt;/version&gt;
+		&lt;groupId>org.flylib&lt;/groupId&gt;
+		&lt;artifactId>flylib-passport&lt;/artifactId&gt;
+		&lt;version>1.0.0-SNAPSHOT&lt;/version&gt;
 	&lt;/dependency&gt;
 </pre></code>
 <br/>
