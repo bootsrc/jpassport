@@ -23,10 +23,10 @@ git clone https://github.com/flylib/flylib-site.git    and run it. <br/>
 <br/>
 
 <code>
-<dependency>
-			<groupId>org.flylib</groupId>
-			<artifactId>flylib-passport</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
-		</dependency>
+&lt; dependency&gt;
+			&lt; groupId>org.flylib &lt; /groupId &gt;
+			&lt; artifactId>flylib-passport &lt; /artifactId &gt;
+			&lt; version>1.0.0-SNAPSHOT &lt; /version &gt;
+		&lt; /dependency &gt;
 </code> 
 <br/>
