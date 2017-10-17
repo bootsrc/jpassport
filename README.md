@@ -20,7 +20,6 @@ Step2: cd flylib-passport   <br/>
 Then flylib-passport.jar is installed in your local maven repo.  <br/>
 Step3: Reference flylib-passport-1.0.0-SNAPSHOT.jar in your own SpringMVC project. Please clone flylib-site to see this example
 git clone https://github.com/flylib/flylib-site.git    and run it. <br/>
-<br/>
 
 Please add this dependency in your own project pom file.
 <pre><code>
