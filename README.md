@@ -22,6 +22,7 @@ Step3: Reference flylib-passport-1.0.0-SNAPSHOT.jar in your own SpringMVC projec
 git clone https://github.com/flylib/flylib-site.git    and run it. <br/>
 <br/>
 
+Please add this dependency in your own project pom file.
 <pre><code>
 	&lt;dependency&gt;
 		&lt;groupId>org.flylib&lt;/groupId&gt;
