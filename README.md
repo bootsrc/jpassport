@@ -32,3 +32,10 @@ Please add this dependency in your own project pom file.
 <br/>
 
 Database table SQL Scripts are in doc/db/xxx.sql <br/>
+
+Chinese Blog(关于这个框架的介绍，请看中文博客) <a href="http://blog.csdn.net/lsm135/article/details/78266814"
+ target="_blank">http://blog.csdn.net/lsm135/article/details/78266814</a> <br/>
+ 
+ 或者<a href="https://my.oschina.net/u/3051910/blog/1552166"
+ target="_blank">https://my.oschina.net/u/3051910/blog/1552166</a> <br/>
+ 
