@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xsi:schemaLocation="  
+		http://www.springframework.org/schema/mvc  
+    	http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+		http://www.springframework.org/schema/context                http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<import resource="mybatisContext.xml" />
+	<context:property-placeholder ignore-unresolvable="true" location="classpath:property/*.properties"/>
+	
+<!-- 	==================flylib jar包对应的配置========================================= -->
+<!-- 	<context:component-scan base-package="com.appjishu.passport.intercepter"></context:component-scan> -->
+	<bean id="loginIntercepter" class="com.appjishu.passport.intercepter.LoginInterceptor"></bean>
+	<context:component-scan base-package="com.appjishu.passport.service"></context:component-scan>
+	
+	 <mvc:annotation-driven />
+    <mvc:interceptors>  
+<!-- 		<mvc:interceptor>   -->
+<!--           		<mvc:mapping path="/public/**" />   -->
+<!--           		<bean class="com.X.interceptor.AccessInterceptor"></bean>   -->
+<!--        	</mvc:interceptor> -->
+       	<mvc:interceptor>  
+          		<mvc:mapping path="/account/**" />  
+          		<ref bean="loginIntercepter"/> 
+       	</mvc:interceptor>
+     </mvc:interceptors> 
+     
+      <bean id="redisClient" class="com.appjishu.passport.redis.RedisClient">
+    	<property name="jedisPool" ref="jedisPool"/>
+    </bean>
+	
+	<!-- 	==================flylib jar包对应的配置====END===================================== -->
+	
+	<!-- Spring MVC -->
+	<context:component-scan base-package="com.appjishu.site.spring"></context:component-scan>
+	<context:component-scan base-package="com.appjishu.site.*.service"></context:component-scan>
+	<context:component-scan base-package="com.appjishu.site.controller.**"></context:component-scan>
+	<context:component-scan base-package="com.appjishu.site.spring"></context:component-scan>
+	
+	<!-- 	==================redis========================================= -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="300"/> <!--最大能够保持idel状态的对象数-->
+        <property name="maxTotal" value="6000"/><!--最大分配的对象数-->
+        <property name="testOnBorrow" value="false"/><!--当调用borrow Oject方法时，是否进行有效性检查-->
+    </bean>
+
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg name="poolConfig" ref="jedisPoolConfig" />
+        <constructor-arg name="host" value="${redis.host}" />
+        <constructor-arg name="port" value="${redis.port}" type="int" />
+        <constructor-arg name="timeout" value="${redis.timeout}" type="int" />
+        <constructor-arg name="password" value="#{'${redis.password}'!=''?'${redis.password}':null}" />
+        <constructor-arg name="database" value="${redis.db.index}" type="int" />
+    </bean>
+    <!-- 	==================redis END========================================= -->
+
+</beans>

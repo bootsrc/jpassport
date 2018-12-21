@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- create by autoCode,v1.0.0 -->
+<mapper namespace="com.appjishu.site.biz.dao.DemoDAO">
+	<update id="updateName" parameterType="Map">
+		update test_table_frank set name=#{name} where id=#{id}
+	</update>
+	
+	<select id="firstId" resultType="Long">
+		select id from card_verify limit 1 
+	</select>	
+</mapper>

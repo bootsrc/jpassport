@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- create by autoCode,v1.0.0 -->
+<mapper namespace="com.appjishu.passport.dao.TokenDAO">
+	<select id="getToken" resultType="String" parameterType="Map">
+		SELECT token FROM fly_token WHERE user_id=#{userId} LIMIT 1
+	</select>	
+	
+	<insert id="insert" parameterType="Map">
+		INSERT INTO fly_token( user_id, token, expire, create_time, update_time )
+		VALUES (#{userId}, #{token}, #{expire}, NOW(), NOW())
+	</insert>
+	
+	<update id="updateToken" parameterType="Map">
+		UPDATE fly_token SET token=#{token} WHERE user_id=#{userId}
+	</update>
+</mapper>

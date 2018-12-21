@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- create by autoCode,v1.0.0 -->
+<mapper namespace="com.appjishu.site.biz.dao.UserDAO">
+	<resultMap id="userResultMap" type="User">
+		<id property="id" column="id"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="status" column="status"/>
+		<result property="password" column="password"/>
+		<result property="mobile" column="mobile"/>
+		<result property="email" column="email"/>
+		<result property="openid" column="openid"/>
+	</resultMap> 
+	
+	<insert id="insert" parameterType="User" useGeneratedKeys="true"
+		keyProperty="id">
+		INSERT INTO fly_user( create_time, update_time, status, password
+		<if test="mobile!=null and mobile!=''">
+			,mobile
+		</if>
+		<if test="email!=null and email!=''">
+			,email
+		</if>
+		<if test="openid!=null and openid!=''">
+			,openid
+		</if>
+		 )
+		VALUES (NOW(), NOW(), #{status}, #{password}
+		<if test="mobile!=null and mobile!=''">
+			,#{mobile}
+		</if>
+		<if test="email!=null and email!=''">
+			,#{email}
+		</if>
+		<if test="openid!=null and openid!=''">
+			,#{openid}
+		</if>
+		)
+	</insert>
+	
+	<select id="getUserByMobile" parameterType="map" resultMap="userResultMap">
+		SELECT * FROM fly_user WHERE mobile=#{mobile} LIMIT 1
+	</select>
+	
+	<select id="getUserByEmail" parameterType="map" resultMap="userResultMap">
+		SELECT * FROM fly_user WHERE email=#{email} LIMIT 1
+	</select>
+	
+	<select id="exist" parameterType="Map" resultType="Integer" statementType="STATEMENT">
+		SELECT COUNT(*) FROM fly_user WHERE ${field}=${fieldValue}
+	</select>
+</mapper>

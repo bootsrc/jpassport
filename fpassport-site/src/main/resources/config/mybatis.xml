@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 在这个文件放置一些全局性的配置 -->
+    <typeAliases>
+        <typeAlias type="com.appjishu.passport.model.Token" alias="Token"/>
+        <typeAlias type="com.appjishu.site.model.User" alias="User"/>
+    </typeAliases>
+</configuration>
