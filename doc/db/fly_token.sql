@@ -1,10 +1,10 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : tencent-flylib_1
+Source Server         : fpassport
 Source Server Version : 50632
 Source Host           : localhost:3306
-Source Database       : flylib_1
+Source Database       : fpassport
 
 Target Server Type    : MYSQL
 Target Server Version : 50632

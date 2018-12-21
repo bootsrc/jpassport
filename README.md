@@ -46,7 +46,7 @@ Step3: 在你自己的SpringMVC或者SpringBoot项目中引用fpassport-lib.jar 
 ```
 <br/>
 
-Step4. 数据库建表SQL在fpassport/doc/db/xxx.sql <br/>
+Step4. 数据库建表SQL在doc/db/xxx.sql <br/>
 根据fly_token.sql和fly_user.sql建立两个表fly_token和fly_user <br/>
 把flylib-site里面的resources/property/jdbc.properties和redis.properties改成自己的数据库和redis配置
  <br/>
