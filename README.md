@@ -149,3 +149,10 @@ public boolean preHandle(HttpServletRequest request, HttpServletResponse respons
 ### 6.2 userId和token在客户端存放在哪里
 http客户端，需要存放在cookie中，每次请求的时候，需要从cookie中读取； <br/>
 Android客户端，可以存放在SharedPreferences里面；<br/>
+<br/>
+有代码改进优化的建议的统一在Issues里面提
+<br/>
+加群讨论 
+<br/>
+![](doc/image/group-qrcode.png)
+<br/>
