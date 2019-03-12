@@ -1,7 +1,15 @@
 # fpassport-lib
 ## 1.概述
-fpassport-lib是根据token机制实现的WEB登录权限校验模块。<br/>
-Passport for Java WEB project via userId and token <br/><br/>
+jpassport是根据token机制实现的登录权限校验模块。<br/>
+Passport for Java project via userId and token <br/><br/>
+
+**jseckill是怎么诞生的？**
+
+作者[liushaoming](https://github.com/liushaoming) 之前在做公司的一个大型社交类App后台项目中，开发了这个登录模块。当时是用Spring MVC做的，<br/> 
+后来开源出来，现在改成了最新的Spring Boot2.X 。经过大型社交网络系统的高并发场景的长期考验。说明了 <br/>
+**jseckill能够支撑起大型互联网项目**
+ 
+
 为什么需要token机制来进行权限校验呢？<br/>
 
 在分布式环境中，因为站点是集群的，不可能使用tomcat的session来保存用户的登录状态。微服务架构也需要<br/>
@@ -9,28 +17,29 @@ Passport for Java WEB project via userId and token <br/><br/>
 这里，基于Spring的Interceptor来拦截指定的需要权限验证的<br/>
 Controller里的method，去校验userId + token。就可以实现它。<br/>
 
+
 ## 2.技术选型
 
-1.Spring + Spring MVC + myBatis. 可用于SpringMVC或者SpringBoot项目<br/>
+1.Spring + Spring Boot 2.X + MyBatis. 可用于SpringMVC或者SpringBoot项目<br/>
 2.maven3.0 <br/>
 3.Jdk1.8+ <br/>
 4.mysql或者其他的数据库 <br/>
 5.Redis <br/>
 
-## 3.fpassport-lib权限认证模块的使用
-如何使用fpassport-lib库，参考项目<code>fpassport-site</code>  <br/>
+## 3.jpassport-lib权限认证模块的使用
+如何使用jpassport-lib库，参考项目<code>jpassport-web</code>  <br/>
 
 Usage: <br/>
 Step1: 
 ```shell
-git clone https://github.com/flylib/fpassport.git 
+git clone https://github.com/liushaoming/jpassport.git 
 ```  
 <br/>
 Step2: 安装fpassport-lib.jar到本地的maven仓库 <br/>
 进入fpassport-lib目录
 
 ```shell
-cd fpassport-lib
+cd jpassport-lib
 mvn install
 ```
 <br/>
@@ -40,7 +49,7 @@ Step3: 在你自己的SpringMVC或者SpringBoot项目中引用fpassport-lib.jar 
 ```xml
 <dependency>
     <groupId>com.appjishu</groupId>
-    <artifactId>fpassport-lib</artifactId>
+    <artifactId>jpassport-lib</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
@@ -51,6 +60,19 @@ Step4. 数据库建表SQL在doc/db/xxx.sql <br/>
 把flylib-site里面的resources/property/jdbc.properties和redis.properties改成自己的数据库和redis配置
  <br/>
  
+ Step5. 启动jpassport-web项目（或者你自己的项目)
+ 在IDEA/eclipse里，找到jpassport-web下的App.java， 右键--Debug
+ 
+ 打开浏览器，访问
+ ```text
+http://localhost:20100/
+```
+正常情况，浏览器会显示文本如下
+```text
+this is jpassport home page.
+```
+
+
  ## 4.测试
  
  下面是一些测试url<br/><br/>
