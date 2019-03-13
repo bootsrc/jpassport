@@ -3,7 +3,7 @@
 jpassport是根据token机制实现的登录权限校验模块。**经历了大型社交网络的生产环境考验，能应对高并发场景，可以集群化部署**<br/>
 Passport for Java project via userId and token <br/><br/>
 
-GitHub地址为[https://github.com/liushaoming/jpassport](https://github.com/liushaoming/jpassport)
+**GitHub**地址为[https://github.com/liushaoming/jpassport](https://github.com/liushaoming/jpassport)
 
 建议访问GitHub以获取作者的更多分布式项目源码[https://github.com/liushaoming?tab=repositories](https://github.com/liushaoming?tab=repositories)
 
