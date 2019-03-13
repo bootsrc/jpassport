@@ -176,9 +176,19 @@ public boolean preHandle(HttpServletRequest request, HttpServletResponse respons
 http客户端，需要存放在cookie中，每次请求的时候，需要从cookie中读取； <br/>
 Android客户端，可以存放在SharedPreferences里面；<br/>
 <br/>
+
+## 联系作者
+|  联系方式 |  |
+| :-------- | :-------- |
+| **Leader** | liushaoming |
+| email | [liushaomingdev@163.com](mailto:liushaomingdev@163.com) |
+| QQ | 944147540 |
+
+
 有代码改进优化的建议的统一在Issues里面提
 <br/>
 加群讨论 
 <br/>
 ![](doc/image/group-qrcode.png)
 <br/>
+
