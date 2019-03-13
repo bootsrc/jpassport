@@ -106,6 +106,16 @@ headers:
 
 ## 5.源码分析
 
+**核心原理概述**
+使用Spring Web的Interceptor来拦截http request里的header里的参数userId,token
+
+后台认证， 对比存在Redis中的token （持久化到了MySQL里）
+
+token,在注册时候生成，在用户修改密码后，token会被后台更新，踢掉别的客户端操作。
+
+token存在Redis里，适合分布式认证的场景。属于轻量级的可靠认证。
+
+
 ### 5.1 指定特定的Controller，让它里面的所有的action都被登录校验 
 使用了注解<code>@AuthController</code> <br/>
 同时使用了<code>org.flylib.passport.intercepter.LoginInterceptor</code>
