@@ -177,6 +177,10 @@ http客户端，需要存放在cookie中，每次请求的时候，需要从cook
 Android客户端，可以存放在SharedPreferences里面；<br/>
 <br/>
 
+### 6.3 为什么使用Spring Boot 2.X ?
+因为Spring Boot适合快速构建Spring应用。 而且这里及时更新到Spring Boot 2.X。 
+免去了获取代码的程序员自己去升级。开箱即用。
+
 ## 联系作者
 |  联系方式 |  |
 | :-------- | :-------- |
@@ -191,4 +195,5 @@ Android客户端，可以存放在SharedPreferences里面；<br/>
 <br/>
 ![](doc/image/group-qrcode.png)
 <br/>
+
 
