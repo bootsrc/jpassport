@@ -3,13 +3,6 @@
 jpassport是根据token机制实现的登录权限校验模块。**经历了大型社交网络的生产环境考验，能应对高并发场景，可以集群化部署**<br/>
 Passport for Java project via userId and token <br/><br/>
 
-哪些项目在生产环境采用了jpassport作为登陆模块？
-
-| Logo | 简介 | 官网 |
-| :------: | :------: | :------: |
-| ![](doc/image/app.png) | 基于电子名片的人脉管理，社交类App | [https://www.jingwei.com/](https://www.jingwei.com/) |
-
-
 **GitHub**地址为[https://github.com/liushaoming/jpassport](https://github.com/liushaoming/jpassport)
 
 建议访问GitHub以获取作者的更多分布式项目源码[https://github.com/liushaoming?tab=repositories](https://github.com/liushaoming?tab=repositories)
